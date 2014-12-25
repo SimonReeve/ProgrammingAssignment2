@@ -1,9 +1,9 @@
 ## This R file is my first file presented in github, 
 ## whose function is to cache a inverse matrix of one specific matrix
 
-## The following function named makeCacheMatri creates a specific "matrix" object that can cache its inverse.
+## The following function named makeCacheMatrix creates a specific "matrix" object that can cache its inverse.
 
-makeCacheMatri <- function(x = numeric())
+makeCacheMatrix <- function(x = matrix())
 {
     m <- NULL     # Initialize m when a new matrix coming, avoiding cacheing an ex-output when a new input comes.
     set <- function(y)
@@ -20,7 +20,7 @@ makeCacheMatri <- function(x = numeric())
 }
 
 
-## The following function named cacheSolve computes the inverse of the special "matrix" returned by makeCacheMatri above.
+## The following function named cacheSolve computes the inverse of the special "matrix" returned by makeCacheMatrix above.
 ## If the inverse has already been calculated (and the matrix has not changed), 
 ## then the cachesolve should retrieve the inverse from the cache.
 
@@ -42,7 +42,7 @@ cacheSolve <- function(x, ...)
 ## Run the above two functions with following commands to test this R file
 ## > source("cachematrix.R")
 ## > set.seed(1)       # help to set one specific test matrix
-## > A <- makeCacheMatri(matrix(rnorm(16),4,4))
+## > A <- makeCacheMatrix(matrix(rnorm(16),4,4))
 ## > A$get()
 ##            [,1]       [,2]       [,3]        [,4]
 ## [1,] -0.6264538  0.3295078  0.5757814 -0.62124058
@@ -70,7 +70,7 @@ cacheSolve <- function(x, ...)
 ## [2,]  1.5301385 -0.8532288 -0.8240908  0.26742439
 ## [3,] -0.4197372  0.5574457  0.8748252  0.22924604
 ## [4,] -0.5605101 -0.1913025  0.1990296 -0.09383139
-## > A <- makeCacheMatri(matrix(c(1,2,-1,-1),2,2))
+## > A <- makeCacheMatrix(matrix(c(1,2,-1,-1),2,2))
 ## > A$get()
 ##      [,1] [,2]
 ## [1,]    1   -1
@@ -80,5 +80,5 @@ cacheSolve <- function(x, ...)
 ## [1,]   -1    1
 ## [2,]   -2    1
 ## Following commands will produce ridiculous results.
-## > A <- makeCacheMatri(matrix(c(1,2,-1,-1),2,2))
+## > A <- makeCacheMatrix(matrix(c(1,2,-1,-1),2,2))
 ## > A$setInverse(0)  # Don't manually set any data for function setInverse()
